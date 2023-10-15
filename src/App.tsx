@@ -1,13 +1,11 @@
+import { RouterProvider } from "react-router-dom";
+import router from "./routes";
 
 function App() {
 
   return (
-    <div className='TaskItem'>
-      <h2 className="text-xl font-bold">Sports Pulse</h2>
-      <p>Paragraph 1</p>
-      <p>Paragraph 2</p>
-    </div>
-  )
+    <RouterProvider router={router} />
+  );
 }
 
 export default App
