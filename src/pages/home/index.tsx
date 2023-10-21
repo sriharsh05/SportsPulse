@@ -1,6 +1,13 @@
+import Matches from "../../components/liveMatches";
 
 const Home = () => {
-  return <div>This is home page</div>;
+  return (
+    <main className="flex flex-col">
+      <section>
+        <Matches />
+      </section>
+    </main>
+  )
 };
 
 export default Home;
