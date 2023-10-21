@@ -53,3 +53,7 @@ export const getMatcheList = async () => {
 export const getMatch = async (id: string) => {
   return await request(`matches/${id}`, "GET");
 };
+
+export const getArticlesList = async () => {
+  return await request("articles/", "GET");
+};
