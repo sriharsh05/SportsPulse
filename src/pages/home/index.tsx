@@ -6,6 +6,9 @@ const Home = () => {
       <section>
         <Matches />
       </section>
+      <section className="grid grid-cols-2">
+        Article section
+      </section>
     </main>
   )
 };
