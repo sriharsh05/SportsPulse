@@ -47,5 +47,9 @@ export const request = async (
 };
 
 export const getMatcheList = async () => {
-    return await request("matches/", "GET");
-  };
+  return await request("matches/", "GET");
+};
+
+export const getMatch = async (id: string) => {
+  return await request(`matches/${id}`, "GET");
+};

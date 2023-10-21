@@ -31,12 +31,12 @@ export const matchListReducer: Reducer<MatchListState, MatchListAction> = (
         isError: true,
         errorMessage: action.payload,
       };
-    case MatchListActionTypes.UPDATE_MATCH_REQUEST:
+    case MatchListActionTypes.UPDATE_SCORE_REQUEST:
       return {
         ...state,
         isLoading: true,
       };
-    case MatchListActionTypes.UPDATE_MATCH_SUCCESS:
+    case MatchListActionTypes.UPDATE_SCORE_SUCCESS:
       return {
         ...state,
         isLoading: false,
@@ -44,7 +44,7 @@ export const matchListReducer: Reducer<MatchListState, MatchListAction> = (
           match.id === action.payload.id ? action.payload : match
         ),
       };
-    case MatchListActionTypes.UPDATE_MATCH_FAILURE:
+    case MatchListActionTypes.UPDATE_SCORE_FAILURE:
       return {
         ...state,
         isLoading: false,

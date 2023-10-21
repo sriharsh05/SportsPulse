@@ -1,12 +1,17 @@
 import { format } from "date-fns";
 import { MatchPreview, MatchListState } from "../../context/liveMatches/types";
-import { useMatchListState } from "../../context/liveMatches/context";
+import {
+  useMatchListDispatch,
+  useMatchListState,
+} from "../../context/liveMatches/context";
+import { fetchUpdatedMatchScore } from "../../context/liveMatches/action";
 
 const MatchListItems = () => {
   const matchListState: MatchListState = useMatchListState();
+  const matchListDispatch = useMatchListDispatch();
 
-  const handleUpdate = () => {
-    console.log("update code");
+  const handleUpdate = (matchId: string) => {
+    fetchUpdatedMatchScore(matchListDispatch, matchId);
   };
 
   if (matchListState.isLoading) {
@@ -61,7 +66,7 @@ const MatchListItems = () => {
               ))}
             </div>
             <button
-              onClick={() => handleUpdate()}
+              onClick={() => handleUpdate(match.id)}
               className="bg-teal-500 text-white p-2 text-sm rounded-lg hover:bg-teal-600"
             >
               Refresh
