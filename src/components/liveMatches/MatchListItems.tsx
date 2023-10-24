@@ -16,9 +16,7 @@ const MatchListItems = () => {
   };
 
   if (matchListState.isLoading) {
-    return (
-      <LoadingSpinner/>
-    );
+    return <LoadingSpinner />;
   }
 
   if (matchListState.isError) {
@@ -29,7 +27,7 @@ const MatchListItems = () => {
     );
   }
   return (
-    <div className="flex p-2 bg-slate-200">
+    <div className="flex p-2 bg-teal-100">
       {matchListState.matches.map((match: MatchPreview) => (
         <div
           key={match.id}
@@ -66,9 +64,22 @@ const MatchListItems = () => {
             </div>
             <button
               onClick={() => handleUpdate(match.id)}
-              className="bg-teal-500 text-white p-2 text-sm rounded-lg hover:bg-teal-600"
+              className=" text-teal-500 p-2 text-sm rounded-lg hover:text-teal-700"
             >
-              Refresh
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                />
+              </svg>
             </button>
           </div>
         </div>
