@@ -5,6 +5,7 @@ import {
   useMatchListState,
 } from "../../context/liveMatches/context";
 import { fetchUpdatedMatchScore } from "../../context/liveMatches/action";
+import LoadingSpinner from "../LoadingSpinner";
 
 const MatchListItems = () => {
   const matchListState: MatchListState = useMatchListState();
@@ -16,9 +17,7 @@ const MatchListItems = () => {
 
   if (matchListState.isLoading) {
     return (
-      <div className="text-center">
-        <span>Loading...</span>
-      </div>
+      <LoadingSpinner/>
     );
   }
 

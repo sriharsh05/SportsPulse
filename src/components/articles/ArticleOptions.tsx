@@ -3,6 +3,7 @@ import { getSports } from "../../utils/api";
 import { useArticleListState } from "../../context/articles/context";
 import { ArticleListState, Sport } from "../../context/articles/types";
 import ArticleCard from "./ArticleCard";
+import LoadingSpinner from "../LoadingSpinner";
 
 export default function ArticleOptions() {
   const articleListState: ArticleListState = useArticleListState();
@@ -18,7 +19,9 @@ export default function ArticleOptions() {
   }, []);
 
   if (articleListState.isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <LoadingSpinner/>
+    );
   }
 
   if (articleListState.isError) {
