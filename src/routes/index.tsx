@@ -4,16 +4,21 @@ import Home from "../pages/home";
 import Signin from "../pages/signin";
 import Signup from "../pages/signup";
 import Logout from "../pages/logout";
+import ArticlePage from "../pages/articles";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <AccountLayout />,
     children: [
-      { path: "/", element: <Home /> },
+      {
+        path: "/",
+        element: <Home />,
+        children: [{ path: "/articles/:id", element: <ArticlePage /> }],
+      },
       { path: "/signin", element: <Signin /> },
       { path: "/signup", element: <Signup /> },
-      { path: "/logout",  element: <Logout />},
+      { path: "/logout", element: <Logout /> },
     ],
   },
 ]);
