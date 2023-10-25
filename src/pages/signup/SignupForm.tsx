@@ -21,7 +21,7 @@ const SignupForm: React.FC = () => {
     const { name, email, password} = data;
 
     try {
-      const response = await fetch(`${API_ENDPOINT}/organisations`, {
+      const response = await fetch(`${API_ENDPOINT}/users`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -30,11 +30,13 @@ const SignupForm: React.FC = () => {
           password: password,
         }),
       });
-
+      const data = await response.json();
       if (!response.ok) {
         throw new Error("Sign-up failed");
       }
       console.log("Sign-up successful");
+      localStorage.setItem("authToken", data.auth_token);
+      localStorage.setItem("userData", JSON.stringify(data.user));
       navigate("/");
     } catch (error) {
       console.error("Sign-up failed:", error);
