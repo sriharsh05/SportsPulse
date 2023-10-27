@@ -1,7 +1,4 @@
-export type Team = {
-  id: number;
-  name: string;
-};
+import { Team } from "../preferences/types";
 
 export interface MatchPreview {
   id: string;

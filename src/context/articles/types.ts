@@ -1,4 +1,4 @@
-import { Team } from "../liveMatches/types";
+import { Team } from "../preferences/types";
 
 export type Sport = {
   id: number;

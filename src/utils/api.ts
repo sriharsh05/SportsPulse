@@ -65,3 +65,13 @@ export const getArticle = async (id: string) => {
 export const getSports = async () => {
   return await request("sports/", "GET");
 };
+
+export const getPreferences = async () => {
+  return await request("user/preferences/", "GET");
+};
+
+export const updateUserPreferences = async (sports: string[], teams: string[]) => {
+  return await request("user/preferences/", "PATCH", {
+    preferences: { sports, teams },
+  });
+};
