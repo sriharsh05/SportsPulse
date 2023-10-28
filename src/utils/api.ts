@@ -64,7 +64,11 @@ export const getArticle = async (id: string) => {
 
 export const getSports = async () => {
   return await request("sports/", "GET");
-};
+};  
+
+export const getTeams = async () => {
+  return await request("teams/", "GET");
+}
 
 export const getPreferences = async () => {
   return await request("user/preferences/", "GET");

@@ -6,10 +6,12 @@ import {
 } from "../../context/liveMatches/context";
 import { fetchUpdatedMatchScore } from "../../context/liveMatches/action";
 import LoadingSpinner from "../LoadingSpinner";
+import { usePreferencesState } from "../../context/preferences/context";
 
 const MatchListItems = () => {
   const matchListState: MatchListState = useMatchListState();
   const matchListDispatch = useMatchListDispatch();
+  const preferencesState = usePreferencesState();
 
   const handleUpdate = (matchId: string) => {
     fetchUpdatedMatchScore(matchListDispatch, matchId);
@@ -26,9 +28,16 @@ const MatchListItems = () => {
       </div>
     );
   }
+  const screenedMatches =
+    preferencesState.preferences?.sports?.length > 0
+      ? matchListState.matches.filter((match) => {
+          return preferencesState.preferences.sports.includes(match.sportName);
+        })
+      : matchListState.matches;
+
   return (
     <div className="flex p-2 bg-teal-100">
-      {matchListState.matches.map((match: MatchPreview) => (
+      {screenedMatches.map((match: MatchPreview) => (
         <div
           key={match.id}
           className="w-64 p-2 m-2 border rounded-lg bg-white shadow-md"
