@@ -7,6 +7,7 @@ import Logout from "../pages/logout";
 import ArticlePage from "../pages/articles";
 import PreferencesPage from "../pages/preferences";
 import ProtectedRoute from "./ProtectedRoute";
+import Notfound from "../pages/Notfound";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       { path: "/signin", element: <Signin /> },
       { path: "/signup", element: <Signup /> },
       { path: "/logout", element: <Logout /> },
+      {
+        path: "*",
+        element: <Notfound />,
+      },
     ],
   },
 ]);
