@@ -4,12 +4,14 @@ import { useArticleListState } from "../../context/articles/context";
 import { ArticleListState, Sport } from "../../context/articles/types";
 import ArticleCard from "./ArticleCard";
 import LoadingSpinner from "../LoadingSpinner";
+import { usePreferencesState } from "../../context/preferences/context";
 
 export default function ArticleOptions() {
   const articleListState: ArticleListState = useArticleListState();
   const [sportsList, setSportsList] = useState<Sport[]>([]);
   const [selectedSport, setSelectedSport] = useState(-1);
   const [yourNews, setYourNews] = useState(true);
+  const preferencesState = usePreferencesState();
 
   useEffect(() => {
     const fetchSports = async () => {
@@ -31,6 +33,31 @@ export default function ArticleOptions() {
     );
   }
 
+  const screenedSports =
+    !!localStorage.getItem("authToken") &&
+    preferencesState.preferences?.sports?.length > 0
+      ? sportsList.filter((sport) =>
+          preferencesState.preferences.sports.includes(sport.name)
+        )
+      : sportsList;
+
+  const screenedArticles =
+    !!localStorage.getItem("authToken") ? (
+    (preferencesState.preferences?.sports?.length === 0 &&
+    preferencesState.preferences?.teams?.length === 0)
+      ? articleListState.articles
+      : articleListState.articles.filter((article) => {
+          const isSportsSelected = preferencesState.preferences.sports.includes(
+            article.sport.name
+          );
+          const isTeamSelected =
+            preferencesState.preferences.teams.length === 0 ||
+            preferencesState.preferences.teams.some((team) =>
+              article.teams.some((articleTeam) => articleTeam.name === team)
+            );
+          return isSportsSelected || isTeamSelected;
+        })) : articleListState.articles;  
+
   return (
     <div className="w-full">
       <div className="flex space-x-1 p-1">
@@ -46,7 +73,7 @@ export default function ArticleOptions() {
         >
           Your news
         </button>
-        {sportsList.map((sports, index) => (
+        {screenedSports.map((sports, index) => (
           <button
             key={sports.id}
             className={
@@ -63,13 +90,37 @@ export default function ArticleOptions() {
         ))}
       </div>
       <div className="mt-2">
-        {sportsList.map((sports, index) =>
+        {screenedSports.map((sports, index) =>
           yourNews ? (
             <div key={sports.id}>
               <div className="flex flex-col gap-3">
-                {articleListState.articles.map((article) => (
-                  <ArticleCard key={article.id} {...article} />
-                ))}
+                {screenedArticles
+                  .filter((article) => {
+                    if (
+                      preferencesState.preferences?.sports?.length === 0 &&
+                      preferencesState.preferences?.teams?.length === 0
+                    ) {
+                      return true;
+                    }
+                    const isSportsSelected =
+                      preferencesState.preferences.sports.includes(
+                        article.sport.name
+                      );
+                    console.log(preferencesState.preferences.sports)  
+                    console.log(article.sport.name);  
+                    console.log(isSportsSelected);  
+                    const isTeamSelected =
+                      preferencesState.preferences.teams.length === 0 ||
+                      preferencesState.preferences.teams.some((team) =>
+                        article.teams.some(
+                          (articleTeam) => articleTeam.name === team
+                        )
+                      );
+                    return isSportsSelected && isTeamSelected;
+                  })
+                  .map((article) => (
+                    <ArticleCard key={article.id} {...article} />
+                  ))}
               </div>
             </div>
           ) : (
@@ -78,7 +129,7 @@ export default function ArticleOptions() {
               style={{ display: selectedSport === index ? "block" : "none" }}
             >
               <div className="flex flex-col gap-3">
-                {articleListState.articles
+                {screenedArticles
                   .filter((article) => article.sport.id === sports.id)
                   .map((article) => (
                     <ArticleCard key={article.id} {...article} />

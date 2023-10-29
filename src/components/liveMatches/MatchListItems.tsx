@@ -29,6 +29,7 @@ const MatchListItems = () => {
     );
   }
   const screenedMatches =
+    localStorage.getItem("authToken") &&
     preferencesState.preferences?.sports?.length > 0
       ? matchListState.matches.filter((match) => {
           return preferencesState.preferences.sports.includes(match.sportName);
