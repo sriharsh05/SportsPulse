@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const isAuthenticated = !!localStorage.getItem("authToken");
 
@@ -18,11 +19,9 @@ const classNames = (...classes: string[]): string =>
   classes.filter(Boolean).join(" ");
 
 const Appbar = () => {
-
-
   return (
     <>
-      <Disclosure as="nav" className="border-b border-gray-400 bg-teal-100">
+      <Disclosure as="nav" className="border-b border-gray-700 bg-teal-100">
         {() => (
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
@@ -30,8 +29,7 @@ const Appbar = () => {
                 <div className="flex-shrink-0 text-xl font-extrabold ">
                   <p>Sports Pulse </p>
                 </div>
-                <div className="hidden md:block">
-                </div>
+                <div className="hidden md:block"></div>
               </div>
               <div className="hidden md:block">
                 <div className="ml-4 flex items-center md:ml-6">
@@ -54,34 +52,37 @@ const Appbar = () => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        { isAuthenticated ? userNavigation.map((item) => (
-                          <Menu.Item key={item.name}>
-                            {({ active }) => (
-                              <a
-                                href={item.href}
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                        {isAuthenticated
+                          ? userNavigation.map((item) => (
+                              <Menu.Item key={item.name}>
+                                {({ active }) => (
+                                  <Link
+                                    to={item.href}
+                                    className={classNames(
+                                      active ? "bg-gray-300 border border-gray-400" : "",
+                                      "block px-4 py-2 text-sm text-gray-900 "
+                                    )}
+                                  >
+                                    {item.name}
+                                  </Link>
                                 )}
-                              >
-                                {item.name}
-                              </a>
-                            )}
-                          </Menu.Item>
-                        )) : unsignedUserNavigation.map((item) => (
-                          <Menu.Item key={item.name}>
-                            {({ active }) => (
-                              <a
-                                href={item.href}
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
+                              </Menu.Item>
+                            ))
+                          : unsignedUserNavigation.map((item) => (
+                              <Menu.Item key={item.name}>
+                                {({ active }) => (
+                                  <Link
+                                    to={item.href}
+                                    className={classNames(
+                                      active ? "bg-gray-300 border border-gray-400" : "",
+                                      "block px-4 py-2 text-sm text-gray-900 "
+                                    )}
+                                  >
+                                    {item.name}
+                                  </Link>
                                 )}
-                              >
-                                {item.name}
-                              </a>
-                            )}
-                          </Menu.Item> )) }
+                              </Menu.Item>
+                            ))}
                       </Menu.Items>
                     </Transition>
                   </Menu>
