@@ -6,6 +6,7 @@ import Signup from "../pages/signup";
 import Logout from "../pages/logout";
 import ArticlePage from "../pages/articles";
 import PreferencesPage from "../pages/preferences";
+import ProtectedRoute from "./ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -15,8 +16,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        children: [{ path: "/articles/:id", element: <ArticlePage /> },
-        { path: "/preferences", element: <PreferencesPage /> }],
+        children: [
+          { path: "/articles/:id", element: <ArticlePage /> },
+          {
+            path: "/preferences",
+            element: (
+              <ProtectedRoute>
+                <PreferencesPage />
+              </ProtectedRoute>
+            ),
+          },
+        ],
       },
       { path: "/signin", element: <Signin /> },
       { path: "/signup", element: <Signup /> },
