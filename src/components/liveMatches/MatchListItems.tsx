@@ -28,6 +28,15 @@ const MatchListItems = () => {
       </div>
     );
   }
+
+  // let obj = matchListState.matches[0] as MatchPreview;
+
+  // for (const key in obj) {
+  //     if (Object.prototype.hasOwnProperty.call(obj, key)) {
+  //         console.log(key + ": ", obj[key]);
+  //     }
+  // }
+  
   const screenedMatches =
     localStorage.getItem("authToken") &&
     preferencesState.preferences?.sports?.length > 0
@@ -45,7 +54,7 @@ const MatchListItems = () => {
         >
           <div className="px-2 py-4">
             <div className="flex flex-row justify-between">
-              <p className="text-l font-bold mb-2">{match.sportName}</p>
+              <p className="text-l font-bold font-custom mb-2">{match.sportName}</p>
               {match.isRunning && (
                 <div className="flex mx-1">
                   <span className="text-red-500">Live</span>
@@ -54,16 +63,15 @@ const MatchListItems = () => {
             </div>
 
             <p className="text-gray-600 mb-2 text-sm">{match.location}</p>
-            <p className="text-gray-600 mb-2 text-sm">
-              {match.isRunning
-                ? `Started at ${format(
+            <p className="text-gray-600 mb-2 text-sm"> Date: {format(
                     new Date(match.endsAt),
-                    "yyyy-MM-dd HH:mm:ss"
-                  )}`
-                : `Starts at ${format(
+                    "yyyy-MM-dd"
+                  )}
+            </p>
+            <p className="text-gray-600 mb-2 text-sm">Time: {format(
                     new Date(match.endsAt),
-                    "yyyy-MM-dd HH:mm:ss"
-                  )}`}
+                    "HH:mm:ss"
+                  )}
             </p>
             <div className="mt-2">
               {match.teams.map((team, index) => (

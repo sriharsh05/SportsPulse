@@ -1,14 +1,20 @@
 import { Team } from "../preferences/types";
 
-export interface MatchPreview {
+export type MatchPreview = {
   id: string;
-  name: string;
-  sportName: string;
-  location: string;
   isRunning: boolean;
+  name: string;
+  location: string;
+  startsAt: string;
   endsAt: string;
+  score?: {
+    [teamName: string]: string;
+  };
   teams: Team[];
-}
+  sportName: string;
+  playingTeam: number;
+  story: string;
+};
 
 export interface MatchListState {
   matches: MatchPreview[];
