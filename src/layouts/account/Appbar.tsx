@@ -27,7 +27,7 @@ const Appbar = () => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0 text-xl font-extrabold ">
-                  <p>Sports Pulse </p>
+                  <p className="font-custom">Sports Pulse </p>
                 </div>
                 <div className="hidden md:block"></div>
               </div>
