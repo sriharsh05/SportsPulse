@@ -11,7 +11,7 @@ const FavoritesModal = () => {
     isRunning: false,
     name: "",
     location: "",
-    startsAt:"",
+    startsAt: "",
     endsAt: "",
     teams: [],
     sportName: "",
@@ -62,9 +62,7 @@ const FavoritesModal = () => {
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-teal-700 text-white text-left align-middle shadow-xl transition-all">
-                  <div
-                    className="bg-center bg-cover bg-no-repeat"
-                  >
+                  <div className="bg-center bg-cover bg-no-repeat">
                     <div className="p-6 backdrop-brightness-50">
                       <Dialog.Title
                         as="h3"
@@ -72,6 +70,25 @@ const FavoritesModal = () => {
                       >
                         {matchData.name}
                       </Dialog.Title>
+                      <button
+                        className="absolute top-0 right-0 p-2 m-2 rounded-full bg-teal-400 hover:bg-teal-200 focus:outline-none focus:ring-2 focus:ring-slate-600"
+                        onClick={closeModal}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth={1.5}
+                          stroke="currentColor"
+                          className="w-6 h-6"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
                       <p className="mb-4 text-sm">{matchData?.location}</p>
                       <div className="flex justify-between items-center mt-2 ">
                         <p className="text-sm font-bold">
@@ -99,6 +116,5 @@ const FavoritesModal = () => {
     </>
   );
 };
-
 
 export default FavoritesModal;

@@ -13,7 +13,7 @@ const UpdatePasswordModal = () => {
   const closeModal = () => {
     console.log("close modal");
     setIsOpen(false);
-    navigate("../");
+    navigate("/");
   };
 
   const handleUpdatePassword = async (
@@ -68,6 +68,25 @@ const UpdatePasswordModal = () => {
           >
             <div className="inline-block w-full max-w-3xl p-6 my-8 text-left align-middle transition-all transform bg-white rounded-2xl shadow-xl">
               <h1 className="text-2xl">Update Password</h1>
+              <button
+                className="absolute top-0 right-0 p-2 m-2 rounded-full bg-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-600"
+                onClick={closeModal}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
               <div className="mt-4">
                 <label className="block text-gray-700 font-semibold mb-2">
                   Current Password:

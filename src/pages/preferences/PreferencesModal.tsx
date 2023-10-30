@@ -25,7 +25,7 @@ const PreferencesModal = () => {
 
   const closeModal = () => {
     setIsOpen(false);
-    navigate("../");
+    navigate("/");
   };
 
   useEffect(() => {
@@ -38,27 +38,21 @@ const PreferencesModal = () => {
     fetchStateData();
   }, []);
 
-
   useEffect(() => {
-    if (
-      preferencesState.isLoading == false &&
-      preferencesState.preferences
-    ) {
+    if (preferencesState.isLoading == false && preferencesState.preferences) {
       setUserPreferences(preferencesState.preferences);
     }
-  }, [
-    preferencesState.isLoading,
-    preferencesState.preferences
-  ]);
+  }, [preferencesState.isLoading, preferencesState.preferences]);
 
-
-  const handleSportsSelect = (event:React.ChangeEvent<HTMLInputElement>) => {
+  const handleSportsSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedSport = event.target.value;
     const isChecked = event.target.checked;
-  
+
     setUserPreferences((prevPreferences) => {
-      const updatedSports = Array.isArray(prevPreferences.sports) ? [...prevPreferences.sports] : [];
-  
+      const updatedSports = Array.isArray(prevPreferences.sports)
+        ? [...prevPreferences.sports]
+        : [];
+
       if (isChecked) {
         updatedSports.push(selectedSport);
       } else {
@@ -67,18 +61,20 @@ const PreferencesModal = () => {
           updatedSports.splice(index, 1);
         }
       }
-  
+
       return { ...prevPreferences, sports: updatedSports };
     });
   };
-  
-  const handleTeamsSelect = (event:React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleTeamsSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedTeam = event.target.value;
     const isChecked = event.target.checked;
-  
+
     setUserPreferences((prevPreferences) => {
-      const updatedTeams = Array.isArray(prevPreferences.teams) ? [...prevPreferences.teams] : [];
-  
+      const updatedTeams = Array.isArray(prevPreferences.teams)
+        ? [...prevPreferences.teams]
+        : [];
+
       if (isChecked) {
         updatedTeams.push(selectedTeam);
       } else {
@@ -87,13 +83,17 @@ const PreferencesModal = () => {
           updatedTeams.splice(index, 1);
         }
       }
-  
+
       return { ...prevPreferences, teams: updatedTeams };
     });
   };
-  
+
   const handelSubmit = () => {
-    updatePreferences(preferencesDispatch, userPreferences.sports, userPreferences.teams);
+    updatePreferences(
+      preferencesDispatch,
+      userPreferences.sports,
+      userPreferences.teams
+    );
     setIsOpen(false);
   };
 
@@ -145,6 +145,25 @@ const PreferencesModal = () => {
               <h1 className="text-2xl text-gray-800 font-semibold">
                 Preferences
               </h1>
+              <button
+                className="absolute top-0 right-0 p-2 m-2 rounded-full bg-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-slate-600"
+                onClick={closeModal}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
               <div className="mt-3">
                 <div className="flex flex-col space-y-3">
                   {sportsData.map((sport) => (
@@ -153,7 +172,11 @@ const PreferencesModal = () => {
                         id={`sports-${sport.id}`}
                         type="checkbox"
                         value={sport.name}
-                        checked={(userPreferences.sports ? userPreferences.sports.includes(sport.name) : false)}
+                        checked={
+                          userPreferences.sports
+                            ? userPreferences.sports.includes(sport.name)
+                            : false
+                        }
                         onChange={handleSportsSelect}
                         className=" appearance-none w-4 h-4 border-2 border-teal-500 rounded-sm bg-white
                         mt-1 shrink-0
@@ -180,7 +203,11 @@ const PreferencesModal = () => {
                         id={`teams-${team.id}`}
                         type="checkbox"
                         value={team.name}
-                        checked={(userPreferences.teams ? userPreferences.teams.includes(team.name) : false)}
+                        checked={
+                          userPreferences.teams
+                            ? userPreferences.teams.includes(team.name)
+                            : false
+                        }
                         onChange={handleTeamsSelect}
                         className="appearance-none w-4 h-4 border-2 border-teal-500 rounded-sm bg-white
                         mt-1 shrink-0
