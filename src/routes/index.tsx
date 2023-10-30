@@ -8,6 +8,7 @@ import ArticlePage from "../pages/articles";
 import PreferencesPage from "../pages/preferences";
 import ProtectedRoute from "./ProtectedRoute";
 import Notfound from "../pages/Notfound";
+import FavoritesPage from "../pages/favorites";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
         element: <Home />,
         children: [
           { path: "/articles/:id", element: <ArticlePage /> },
+          { path: "/favorites/:id", element: <FavoritesPage />},
           {
             path: "/preferences",
             element: (
