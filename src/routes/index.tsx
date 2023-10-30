@@ -9,6 +9,7 @@ import PreferencesPage from "../pages/preferences";
 import ProtectedRoute from "./ProtectedRoute";
 import Notfound from "../pages/Notfound";
 import FavoritesPage from "../pages/favorites";
+import UpdatePasswordModal from "../pages/UpdatePassword/UpdatePasswordModal";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
             element: (
               <ProtectedRoute>
                 <PreferencesPage />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "/password",
+            element: (
+              <ProtectedRoute>
+                <UpdatePasswordModal />
               </ProtectedRoute>
             ),
           },

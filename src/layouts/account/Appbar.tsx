@@ -12,6 +12,7 @@ const unsignedUserNavigation = [
 
 const userNavigation = [
   { name: "Preferences", href: "/preferences" },
+  { name: "Update Password", href: "/password" },
   { name: "Sign out", href: "/logout" },
 ];
 
