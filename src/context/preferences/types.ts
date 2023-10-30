@@ -1,6 +1,7 @@
 export type Team = {
   id: string;
   name: string;
+  plays?: string;
 };
 
 export type PreferencesModel = {
