@@ -1,5 +1,9 @@
 import { Reducer } from "react";
-import { PreferencesAction, PreferencesActionTypes, PreferencesState } from "./types";
+import {
+  PreferencesAction,
+  PreferencesActionTypes,
+  PreferencesState,
+} from "./types";
 
 export const initialState: PreferencesState = {
   preferences: {
@@ -11,10 +15,10 @@ export const initialState: PreferencesState = {
   errorMessage: "",
 };
 
-export const preferencesReducer: Reducer<PreferencesState, PreferencesAction> = (
-  state = initialState,
-  action
-) => {
+export const preferencesReducer: Reducer<
+  PreferencesState,
+  PreferencesAction
+> = (state = initialState, action) => {
   switch (action.type) {
     case PreferencesActionTypes.FETCH_PREFERENCES_REQUEST:
       return {

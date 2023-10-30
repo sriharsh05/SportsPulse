@@ -18,9 +18,13 @@ export const fetchPreferences = async (dispatch: PreferencesDispatch) => {
       payload: error.message,
     });
   }
-}
+};
 
-export const updatePreferences = async (dispatch: PreferencesDispatch, sports: string[], teams: string[]) => {
+export const updatePreferences = async (
+  dispatch: PreferencesDispatch,
+  sports: string[],
+  teams: string[]
+) => {
   try {
     dispatch({ type: PreferencesActionTypes.UPDATE_PREFERENCES_REQUEST });
     const response = await updateUserPreferences(sports, teams);
@@ -37,4 +41,4 @@ export const updatePreferences = async (dispatch: PreferencesDispatch, sports: s
       payload: error.message,
     });
   }
-}
+};

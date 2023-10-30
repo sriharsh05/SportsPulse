@@ -30,7 +30,7 @@ const FavouriteList = () => {
   useEffect(() => {
     let currentSportsTeams = currentSport
       ? teamData.filter((team) => team.plays?.includes(currentSport))
-      : []; 
+      : [];
     currentSportsTeams =
       localStorage.getItem("authToken") &&
       preferencesState.preferences?.teams?.length > 0

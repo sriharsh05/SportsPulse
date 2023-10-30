@@ -3,7 +3,7 @@ import PreferencesModal from "./PreferencesModal";
 const PreferencesPage = () => {
   return (
     <>
-          <PreferencesModal />
+      <PreferencesModal />
     </>
   );
 };

@@ -31,7 +31,10 @@ export enum ArticleListActionTypes {
 
 export type ArticleListAction =
   | { type: ArticleListActionTypes.FETCH_ARTICLES_REQUEST }
-  | { type: ArticleListActionTypes.FETCH_ARTICLES_SUCCESS; payload: ArticlePreview[] }
+  | {
+      type: ArticleListActionTypes.FETCH_ARTICLES_SUCCESS;
+      payload: ArticlePreview[];
+    }
   | { type: ArticleListActionTypes.FETCH_ARTICLES_FAILURE; payload: string };
 
 export type ArticleListDispatch = React.Dispatch<ArticleListAction>;

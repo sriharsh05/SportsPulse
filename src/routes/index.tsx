@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         element: <Home />,
         children: [
           { path: "/articles/:id", element: <ArticlePage /> },
-          { path: "/favorites/:id", element: <FavoritesPage />},
+          { path: "/favorites/:id", element: <FavoritesPage /> },
           {
             path: "/preferences",
             element: (

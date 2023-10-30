@@ -18,4 +18,4 @@ export const fetchArticles = async (dispatch: ArticleListDispatch) => {
       payload: error.message,
     });
   }
-}; 
+};

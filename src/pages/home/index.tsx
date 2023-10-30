@@ -11,7 +11,7 @@ const Home = () => {
       </section>
       <section className="grid grid-cols-4">
         <Article />
-        <FavouriteNews/>
+        <FavouriteNews />
       </section>
       <Outlet />
     </main>

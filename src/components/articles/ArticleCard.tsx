@@ -15,10 +15,12 @@ const ArticleCard = (props: ArticlePreview) => {
             alt={props.title}
           />
           <div className="flex flex-col justify-start p-5">
-          <p className="text-s text-neutral-600"> {props.sport.name}</p>
+            <p className="text-s text-neutral-600"> {props.sport.name}</p>
             <h2 className="text-xl mt-2 font-semibold">{props.title}</h2>
             <p className="text-l text-gray-500">{props.summary}</p>
-              <p className="flex text-sm text-gray-500 mt-3">{ new Date(props.date).toDateString()}</p>
+            <p className="flex text-sm text-gray-500 mt-3">
+              {new Date(props.date).toDateString()}
+            </p>
           </div>
         </div>
       </Link>

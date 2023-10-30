@@ -41,10 +41,9 @@ export default function ArticleOptions() {
         )
       : sportsList;
 
-  const screenedArticles =
-    !!localStorage.getItem("authToken") ? (
-    (preferencesState.preferences?.sports?.length === 0 &&
-    preferencesState.preferences?.teams?.length === 0)
+  const screenedArticles = !!localStorage.getItem("authToken")
+    ? preferencesState.preferences?.sports?.length === 0 &&
+      preferencesState.preferences?.teams?.length === 0
       ? articleListState.articles
       : articleListState.articles.filter((article) => {
           const isSportsSelected = preferencesState.preferences.sports.includes(
@@ -56,7 +55,8 @@ export default function ArticleOptions() {
               article.teams.some((articleTeam) => articleTeam.name === team)
             );
           return isSportsSelected || isTeamSelected;
-        })) : articleListState.articles;  
+        })
+    : articleListState.articles;
 
   return (
     <div className="w-full">
@@ -106,9 +106,9 @@ export default function ArticleOptions() {
                       preferencesState.preferences.sports.includes(
                         article.sport.name
                       );
-                    console.log(preferencesState.preferences.sports)  
-                    console.log(article.sport.name);  
-                    console.log(isSportsSelected);  
+                    console.log(preferencesState.preferences.sports);
+                    console.log(article.sport.name);
+                    console.log(isSportsSelected);
                     const isTeamSelected =
                       preferencesState.preferences.teams.length === 0 ||
                       preferencesState.preferences.teams.some((team) =>

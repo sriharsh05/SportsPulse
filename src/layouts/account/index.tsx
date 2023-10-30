@@ -1,8 +1,7 @@
-import { Outlet } from "react-router-dom"
-import Appbar from "./Appbar"
+import { Outlet } from "react-router-dom";
+import Appbar from "./Appbar";
 
 const AccountLayout = () => {
-
   return (
     <>
       <Appbar />
@@ -12,7 +11,7 @@ const AccountLayout = () => {
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default AccountLayout
+export default AccountLayout;

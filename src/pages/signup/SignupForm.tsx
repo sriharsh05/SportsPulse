@@ -18,7 +18,7 @@ const SignupForm: React.FC = () => {
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const { name, email, password} = data;
+    const { name, email, password } = data;
 
     try {
       const response = await fetch(`${API_ENDPOINT}/users`, {
@@ -55,9 +55,7 @@ const SignupForm: React.FC = () => {
           {...register("name", { required: true })}
           className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-teal-500 focus:shadow-outline-teal"
         />
-        {errors.name && (
-          <span className="text-red-500">Name is required</span>
-        )}
+        {errors.name && <span className="text-red-500">Name is required</span>}
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
@@ -91,7 +89,9 @@ const SignupForm: React.FC = () => {
       >
         Sign up
       </button>
-      <Link to={"/signin"} className="hover:text-emerald-500 transition-all">Already have an account? Sign in</Link>
+      <Link to={"/signin"} className="hover:text-emerald-500 transition-all">
+        Already have an account? Sign in
+      </Link>
     </form>
   );
 };

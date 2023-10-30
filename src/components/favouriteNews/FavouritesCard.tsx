@@ -22,8 +22,9 @@ const FavouritesCard = (props: MatchPreview) => {
   }, [props.id]);
 
   return (
-    <Link className="block p-5 w-full rounded-lg hover:shadow-xl transition duration-300 border-2 border-teal-200" 
-     to={`/favorites/${props.id}`}
+    <Link
+      className="block p-5 w-full rounded-lg hover:shadow-xl transition duration-300 border-2 border-teal-200"
+      to={`/favorites/${props.id}`}
     >
       <p className="text-sm mb-1">{props.name}</p>
       <p className="text-gray-600 text-sm mb-1">

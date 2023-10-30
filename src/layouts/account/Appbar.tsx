@@ -60,7 +60,9 @@ const Appbar = () => {
                                   <Link
                                     to={item.href}
                                     className={classNames(
-                                      active ? "bg-gray-300 border border-gray-400" : "",
+                                      active
+                                        ? "bg-gray-300 border border-gray-400"
+                                        : "",
                                       "block px-4 py-2 text-sm text-gray-900 "
                                     )}
                                   >
@@ -75,7 +77,9 @@ const Appbar = () => {
                                   <Link
                                     to={item.href}
                                     className={classNames(
-                                      active ? "bg-gray-300 border border-gray-400" : "",
+                                      active
+                                        ? "bg-gray-300 border border-gray-400"
+                                        : "",
                                       "block px-4 py-2 text-sm text-gray-900 "
                                     )}
                                   >

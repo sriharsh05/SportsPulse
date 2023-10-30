@@ -64,23 +64,32 @@ export const getArticle = async (id: string) => {
 
 export const getSports = async () => {
   return await request("sports/", "GET");
-};  
+};
 
 export const getTeams = async () => {
   return await request("teams/", "GET");
-}
+};
 
 export const getPreferences = async () => {
   return await request("user/preferences/", "GET");
 };
 
-export const updateUserPreferences = async (sports: string[], teams: string[]) => {
+export const updateUserPreferences = async (
+  sports: string[],
+  teams: string[]
+) => {
   return await request("user/preferences/", "PATCH", {
     preferences: { sports, teams },
   });
 };
 
-export const updatePassword = async (current_password: string, new_password: string ) => {
+export const updatePassword = async (
+  current_password: string,
+  new_password: string
+) => {
   console.log(current_password, new_password);
-  return await request("user/password", "PATCH", { current_password, new_password });
-}
+  return await request("user/password", "PATCH", {
+    current_password,
+    new_password,
+  });
+};
