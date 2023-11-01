@@ -95,6 +95,7 @@ const PreferencesModal = () => {
       userPreferences.teams
     );
     setIsOpen(false);
+    navigate("/");
   };
 
   if (preferencesState.isLoading) {
@@ -184,7 +185,7 @@ const PreferencesModal = () => {
                       />
                       <label
                         htmlFor={`sports-${sport.id}`}
-                        className="text-sm text-gray-800 ml-2"
+                        className="text-sm text-gray-800 ml-2 hover:cursor-pointer"
                       >
                         {sport.name}
                       </label>
@@ -215,7 +216,7 @@ const PreferencesModal = () => {
                       />
                       <label
                         htmlFor={`teams-${team.id}`}
-                        className="text-sm text-gray-800 ml-2"
+                        className="text-sm text-gray-800 ml-2 hover:cursor-pointer"
                       >
                         {team.name}
                       </label>
