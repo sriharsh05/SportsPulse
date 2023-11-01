@@ -6,13 +6,13 @@ import FavouriteNews from "../../components/favouriteNews";
 const Home = () => {
   return (
     <main className="flex flex-col">
-      <section>
+      <div>
         <Matches />
-      </section>
-      <section className="grid grid-cols-4">
+      </div>
+      <div className="grid grid-cols-4">
         <Article />
         <FavouriteNews />
-      </section>
+      </div>
       <Outlet />
     </main>
   );

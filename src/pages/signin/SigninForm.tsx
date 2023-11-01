@@ -32,6 +32,7 @@ const Signin: React.FC = () => {
       localStorage.setItem("authToken", data.auth_token);
       localStorage.setItem("userData", JSON.stringify(data.user));
       navigate("/");
+      window.location.reload();
     } catch (error) {
       console.error("Sign-in failed:", error);
     }

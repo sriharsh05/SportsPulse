@@ -1,11 +1,23 @@
-import UpdatePasswordModal from "./UpdatePasswordModal";
-
-const Settings = () => {
+import React, { Suspense } from "react";
+import ErrorBoundary from "../../components/ErrorBoundary";
+import LoadingSpinner from "../../components/LoadingSpinner";
+const UpdatePasswordModal = React.lazy(() => import("./UpdatePasswordModal"));
+const UpdatePasswordPage = () => {
   return (
     <>
-      <UpdatePasswordModal />
+      <ErrorBoundary>
+        <Suspense
+          fallback={
+            <div className="suspense-loading">
+              <LoadingSpinner />
+            </div>
+          }
+        >
+          <UpdatePasswordModal />
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };
 
-export default Settings;
+export default UpdatePasswordPage;

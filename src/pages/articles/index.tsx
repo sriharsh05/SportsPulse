@@ -1,9 +1,21 @@
-import ArticleModal from "./ArticleModal";
-
+import React, { Suspense } from "react";
+import ErrorBoundary from "../../components/ErrorBoundary";
+import LoadingSpinner from "../../components/LoadingSpinner";
+const ArticleModal = React.lazy(() => import("./ArticleModal"));
 const ArticlePage = () => {
   return (
     <>
-      <ArticleModal />
+      <ErrorBoundary>
+        <Suspense
+          fallback={
+            <div className="suspense-loading">
+              <LoadingSpinner />
+            </div>
+          }
+        >
+          <ArticleModal />
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };
