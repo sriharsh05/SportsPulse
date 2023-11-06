@@ -8,7 +8,7 @@ const Matches = () => {
     <div>
       <div className="flex flex-col w-full">
         <h1 className="text-xl font-bold font-custom">
-          Live and upcoming matches
+          Live and completed matches
         </h1>
         <ErrorBoundary>
           <Suspense

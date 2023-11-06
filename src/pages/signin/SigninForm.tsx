@@ -2,6 +2,7 @@ import React from "react";
 import { API_ENDPOINT } from "../../config/constants";
 import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 type Inputs = {
   email: string;
@@ -74,6 +75,9 @@ const Signin: React.FC = () => {
       >
         Sign In
       </button>
+      <Link to={"/signup"} className="hover:text-emerald-500 transition-all">
+        Don't have an account? Sign up
+      </Link>
     </form>
   );
 };
