@@ -6,7 +6,7 @@ const AccountLayout = () => {
     <>
       <Appbar />
       <main>
-        <div className="mx-auto max-w-6xl py-6 lg:px-8 sm:px-6 ">
+        <div className="mx-auto max-w-8xl py-6 lg:px-8 sm:px-6 ">
           <Outlet />
         </div>
       </main>
