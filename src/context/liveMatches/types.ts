@@ -7,9 +7,7 @@ export type MatchPreview = {
   location: string;
   startsAt: string;
   endsAt: string;
-  score?: {
-    [teamName: string]: string;
-  };
+  score?: any;
   teams: Team[];
   sportName: string;
   playingTeam: number;

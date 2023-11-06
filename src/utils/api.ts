@@ -87,7 +87,6 @@ export const updatePassword = async (
   current_password: string,
   new_password: string
 ) => {
-  console.log(current_password, new_password);
   return await request("user/password", "PATCH", {
     current_password,
     new_password,
